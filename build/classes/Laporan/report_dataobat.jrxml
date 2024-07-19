@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="96bceb4d-5f90-48c2-be43-2a7af4076c32">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     obat.`kd_resep` AS obat_kd_resep,
+     obat.`resep_obat` AS obat_resep_obat,
+     obat.`dosis` AS obat_dosis,
+     obat.`harga` AS obat_harga
+FROM
+     `obat` obat]]>
+	</queryString>
+	<field name="obat_kd_resep" class="java.lang.String"/>
+	<field name="obat_resep_obat" class="java.lang.String"/>
+	<field name="obat_dosis" class="java.lang.String"/>
+	<field name="obat_harga" class="java.lang.Integer"/>
+	<group name="obat_dosis">
+		<groupExpression><![CDATA[$F{obat_dosis}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="175" splitType="Stretch">
+			<line>
+				<reportElement uuid="333b109a-2b6a-43f6-806c-55307ef613a1" style="Title" x="31" y="105" width="750" height="1"/>
+				<graphicElement>
+					<pen lineWidth="3.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="e571853c-519e-4a57-880b-86d6e7328aef" style="Title" x="234" y="105" width="307" height="62"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="24" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[DATA OBAT]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="3a66d818-4b8c-4977-9a74-8a0a54c13441" x="39" y="-6" width="750" height="98"/>
+				<imageExpression><![CDATA["src/Image/Kop.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1bb2e8b5-dd59-4455-bf93-1a3bc68325e8" x="416" y="16" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dosis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1bb2e8b5-dd59-4455-bf93-1a3bc68325e8" x="59" y="16" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Obat]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="18b05f90-7bbf-4a78-939d-dba791d1d1a9" x="56" y="7" width="673" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="18b05f90-7bbf-4a78-939d-dba791d1d1a9" x="56" y="41" width="673" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="1bb2e8b5-dd59-4455-bf93-1a3bc68325e8" x="243" y="16" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1bb2e8b5-dd59-4455-bf93-1a3bc68325e8" x="595" y="16" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement uuid="af62f69e-a4ff-4615-9ea8-aa1b7a6dabd9" x="59" y="4" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obat_kd_resep}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b511aa6c-8421-4d8d-bc4a-1bebf5bd0736" x="243" y="4" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obat_resep_obat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c0981044-c8a8-4a90-8140-27d41d054757" x="416" y="4" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obat_dosis}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="18b05f90-7bbf-4a78-939d-dba791d1d1a9" x="56" y="31" width="673" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="c0981044-c8a8-4a90-8140-27d41d054757" x="595" y="4" width="146" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obat_harga}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="130" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1bb2e8b5-dd59-4455-bf93-1a3bc68325e8" x="59" y="95" width="173" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ADMIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1bb2e8b5-dd59-4455-bf93-1a3bc68325e8" x="59" y="13" width="81" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bandung,]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement uuid="4d5db86b-d7fa-451b-a052-4ebea56d4520" x="140" y="13" width="125" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
